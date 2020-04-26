@@ -6,10 +6,18 @@
 
 .section-features {
     padding: 20rem 0;
+    margin-top: -15rem;
     background-image: 
     linear-gradient(to right bottom,
     rgba($color-primary-light, 0.801),
     rgba($color-primary-dark, 0.801)),
     url(../img/nat-4.jpg);
     background-size: cover;
+    transform: skewY(-7deg); 
+    // We can skew the background image one way 
+    // and skew the child element the same amount to the other side to 'straighten it out'
+
+    & > * { // Use > to specify ONLY direct children of the parent element
+        transform: skewY(7deg);   
+    }
 }
