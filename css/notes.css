@@ -1,0 +1,220 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+
+/*Project wide reset to display same on all browswers and not suse default padding etc. Universal selector. */
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    /* font-size: 10px; If we replace the html font size with 10px, we know that 1rem = 10px exactly, which makes rem much easier to use throughout in future. */
+    font-size: 62.5%; /* BUT For better accessibility, we would rather want to use %. --> So 10/16 = 62,5%
+                    Some users like to change their default browser font size and if we hardcode this, it overrides the default setting and users cannot customize it. */
+}
+
+/* Project-wide styling for all child components to use */
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    /* font-size: 16px; */
+    line-height: 1.7;
+    color: #777;
+    padding: 3rem;
+    /* Sets a nice padding around the entire body of the webpage for a uniformed look */
+    box-sizing: border-box; /* This ensures that the height & width INCLUDE the padding & border sizes */
+    /* Block-level boxes (display: block ) display vertically, one after the other. 100% of parent's width.  */
+    /* Inline boxes ( display: inline ) displays horizontally, occupies only content's space. No line breaks, heights or widths. */
+    /* Inline-block boxes ( display: inline-block ) , a mix of the above two.  */
+
+}
+
+.header__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem;
+}
+
+.header__logo {
+    height: 3.5rem;
+}
+
+.header__text-box {
+    /* Centering things */
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    /* transform translate: specify x & y coordinates. No longer relative to parent element, 
+    but relative to the element itsself instead.  */
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.header {
+    position: relative;
+    height: 95vh;
+    /* fills 95% of the viewport height, from the top of the page. */
+    /* We can use two background-images to layer them, separated with a comma.
+    Image that we want to be "on top" needs to be first. */
+    background-image: 
+    linear-gradient(to right bottom,
+    rgba(111, 213, 119, 0.801),
+    rgba(40, 180, 133, 0.801)),
+    url(../img/hero.jpg);
+    background-size: cover;
+    /* cover tries to fit the element to the size of the viewport, container or box */
+    background-position: top;
+    /*background-position locks background when we re-size the viewport. 
+    So for 'top', the top will stay the same while the bottom of the image resizes */
+    clip-path: polygon(0 0, 100% 0,100% 75vh, 0 100%);
+    /* We can specify the coordinates of the polygon shape that we would like to have, 
+    starting top left and moving clockwise. */
+}
+
+.heading-primary {
+    color: #fff;
+    text-transform: uppercase;
+    backface-visibility: hidden; /* Prevents 'shake' of element when animating */
+    margin-bottom: 6rem;
+}
+
+.heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+
+    animation-name: moveInLeft;
+    animation-duration: 2s;
+    animation-timing-function: ease-in;
+
+    /*
+     animation-delay: 3s;
+     animation-iteration-count: 3;
+     */
+}
+
+.heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.7rem;
+
+    animation-name: moveInRight;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes moveInLeft { 
+    /*  Keyframes are used for advanced CSS animations. Custom name = moveInLeft
+        We need to specify what happens at each period of time,
+        so 0% would be start, 100% finish. 
+        Browsers are really only optimized for opacity & transform property. 
+        We can re-use these keyframes animations in other areas by using the name.
+    */
+    0% {
+        opacity: 0;
+        transform: translateX(-10rem);
+    }
+
+    80% {
+        transform: translateX(2rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInRight { 
+    0% {
+        opacity: 0;
+        transform: translateX(10rem);
+    }
+
+    80% {
+        transform: translateX(-2rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInBottom { 
+    0% {
+        opacity: 0;
+        transform: translateY(10rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+/* link is a pseudoclass - to style elements under a special condition */
+.btn:link,
+.btn:visited { 
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 20rem;
+    transition: all .2s ;
+    position: relative;
+    font-size: 1.6rem;
+}
+
+.btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 1rem 2rem rgba(0,0,0,.2);
+}
+
+.btn:active {
+    transform: translateY(-1px); /* In relation to initial state, not to hover state */
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.2);
+}
+
+.btn-white {
+    background-color: #fff;
+    color: #777;
+}
+
+.btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: -1; /* Sets position front or back of each other*/
+    transition: all .4s ;
+}
+
+.btn-white::after {
+    background-color: #fff;
+}
+
+.btn:hover::after {
+    transform: scale(1.5);
+    opacity: 0;
+}
+
+.btn--animated {
+    animation: moveInBottom .5s ease-out .75s;
+    animation-fill-mode: backwards; /* Apply 0% styles before animation starts so that btn is not visible when we load the page */
+}
