@@ -1,0 +1,58 @@
+.story {
+    width: 75%;
+    margin: 0 auto;
+    box-shadow: 0 3rem 6rem rgba($color-black, .1);
+    background-color: $color-white;
+    border-radius: 3px;
+    padding: 6rem;
+    padding-left: 9rem;
+    font-size: $default-font-size;
+    transform: skewX(-12deg);
+
+    &__shape {
+        width: 15rem;
+        height: 15rem;
+        float: left; // For text to flow around shape, float needs to be specified & dimentions need to be specified
+        -webkit-shape-outside: circle(50% at 50% 50%);
+        shape-outside: circle(50% at 50% 50%); // similar to polygon() we used for header img. 50% is radius - radius is half the width & height of shape
+        clip-path: circle(50% at 50% 50%); // this defines the shape of the element itsself
+        transform: translateX(-3rem) skewX(12deg); // Best for spacing out the text from the circle instead of using a margin.
+        position: relative; // To be able to use position: absolute for the fig caption
+    }
+
+    &__img {
+        height: 100%;
+        transform: translateX(-4rem) scale(1.4);
+        backface-visibility: hidden;
+        transition: all .5s;
+    }
+
+    &__text {
+        transform: skewX(12deg); 
+    }
+
+    &__caption {
+        position: absolute; // Requires position: relative for parent element
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 20%);
+        color: $color-white;
+        text-transform: uppercase;
+        font-size: 1.7rem;
+        text-align: center;
+        opacity: 0;
+        transition: all .5s;
+        backface-visibility: hidden;
+    }
+
+    &:hover &__caption {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+
+    }
+
+    &:hover &__img {
+        transform: translateX(-4rem) scale(1); // img was zoomed in initially, then we "zoom out" to it's original size on hover to make it look like we are zooming out
+        filter: blur(3px) brightness(80%);  // brightness > 100% makes it brighter, while brightness < 100% makes it darker
+    }
+}
