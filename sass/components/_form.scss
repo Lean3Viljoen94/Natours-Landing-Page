@@ -1,0 +1,52 @@
+.form {
+  &__group:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+
+  &__input {
+    font-size: 1.5rem;
+    color: inherit;
+    font-family: inherit;
+    padding: 1.5rem 2rem; // always put more padding on sides for aestetic goals
+    border-radius: 2px;
+    background-color: rgba($color-white, 0.5);
+    border: none;
+    border-bottom: 3px solid transparent;
+    width: 90%;
+    display: block;
+
+    // Only on Safari & Chrome
+    &::-webkit-input-placeholder {
+      color: $color-greyDark-2;
+    }
+
+    &:focus {
+      outline: none;
+      // for accesibility:
+      box-shadow: 0 1rem 2rem rgba($color-black, 0.1);
+      border-bottom: 3px solid $color-primary;
+    }
+    // When input to type="email" in form is invalid, we can apply special styling to it:
+    &:focus:invalid {
+        border-bottom: 3px solid $color-secondary-dark; 
+    }
+  }
+
+  // Formatting the input fields labels to be invisible until we click on the input field itsself
+  &__label {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-left: 2rem;
+    margin-top: .7rem;
+    display: block;
+  }
+
+// Input & label are siblings, both are children of form__group.
+// By using the '+', we can select the ADJACENT sibling selector (always after sibling)
+// ~ is the general sibling selector
+
+    &__input:placeholder-shown + &__label {
+
+    }
+
+}
