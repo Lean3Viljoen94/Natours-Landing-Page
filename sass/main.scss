@@ -1,3 +1,7 @@
+
+// All Sass files are imported here then transpiled to vanilla CSS 
+// & saved to style.css - which is then used by index.html
+
 @import "abstracts/functions";
 @import "abstracts/mixins";
 @import "abstracts/variables";
