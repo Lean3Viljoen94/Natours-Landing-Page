@@ -1,44 +1,62 @@
 .section-about {
-    background-color: $color-greyLight-1;
-    padding: 25rem 0;
-    margin-top: -20vh;
+  background-color: $color-greyLight-1;
+  padding: 25rem 0;
+  margin-top: -20vh;
 }
 
 .section-features {
-    padding: 20rem 0;
-    margin-top: -15rem;
-    background-image: 
-    linear-gradient(to right bottom,
-    rgba($color-primary-light, 0.801),
-    rgba($color-primary-dark, 0.801)),
+  padding: 20rem 0;
+  margin-top: -15rem;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba($color-primary-light, 0.801),
+      rgba($color-primary-dark, 0.801)
+    ),
     url(../img/nat-4.jpg);
-    background-size: cover;
-    transform: skewY(-7deg); 
-    // We can skew the background image one way 
-    // and skew the child element the same amount to the other side to 'straighten it out'
+  background-size: cover;
+  transform: skewY(-7deg);
+  // We can skew the background image one way
+  // and skew the child element the same amount to the other side to 'straighten it out'
 
-    & > * { // Use > to specify ONLY direct children of the parent element
-        transform: skewY(7deg);   
-    }
+  & > * {
+    // Use > to specify ONLY direct children of the parent element
+    transform: skewY(7deg);
+  }
 }
 
 .section-tours {
-    background-color: $color-greyLight-1;
-    padding: 25rem 0 15rem 0;
-    margin-top: -15rem;
+  background-color: $color-greyLight-1;
+  padding: 25rem 0 15rem 0;
+  margin-top: -15rem;
 }
 
 .section-stories {
-    padding: 15rem 0;
-    position: relative;
+  padding: 15rem 0;
+  position: relative;
 }
 
 .section-book {
-    padding: 15rem 0;
-    background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+  padding: 15rem 0;
+  background-image: linear-gradient(
+    to right bottom,
+    $color-primary-light,
+    $color-primary-dark
+  );
 }
 
+// Creating the solid color gradient:
+
 .book {
-    background-image: url(../img/nat-10.jpg);
-    background-size: cover;
+  background-image: linear-gradient( 
+      105deg,
+      rgba($color-white, 0.8) 0%,
+      rgba($color-white, 0.9) 50%,
+      transparent 50%
+    ),
+    url(../img/nat-10.jpg);
+  background-size: cover;
+  border-radius: 3px;
+  box-shadow: 0 1.5rem 4rem rgba($color-black, 0.2);
+
+  height: 50rem;
 }
