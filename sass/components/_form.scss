@@ -39,14 +39,18 @@
     margin-left: 2rem;
     margin-top: .7rem;
     display: block;
+    transition: all .3s;
   }
 
 // Input & label are siblings, both are children of form__group.
 // By using the '+', we can select the ADJACENT sibling selector (always after sibling)
 // ~ is the general sibling selector
 
-    &__input:placeholder-shown + &__label {
-
+    &__input:placeholder-shown + &__label { 
+        // invisible label until we type into the black, then it moves down & becomes visible.  
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-4rem);
     }
 
 }
