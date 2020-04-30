@@ -42,7 +42,7 @@
   }
 
   &__list {
-    @include center-horizontally-vertically; // mixin used
+    @include absCenter; // mixin used
     list-style: none;
     text-align: center;
     width: 100%;

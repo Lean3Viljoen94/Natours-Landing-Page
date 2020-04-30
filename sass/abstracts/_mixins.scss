@@ -6,7 +6,7 @@
     }
 }
 
-@mixin center-horizontally-vertically {
+@mixin absCenter { // Absolute Centering
     position: absolute;
     top: 50%;
     left: 50%;
